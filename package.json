@@ -1,0 +1,11 @@
+{
+  "name": "convert",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Быстрый и приватный онлайн-конвертер файлов (client-side)",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && python -m http.server 5500"
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>настройки — Onyx</title>
+<meta name="description" content="Настройки конвертера: тема и качество." />
+<link rel="canonical" href="https://example.com/settings/" />
+<link rel="alternate" hreflang="ru" href="https://example.com/settings/" />
+<link rel="alternate" hreflang="en" href="https://example.com/en/settings/" />
+<link rel="alternate" hreflang="es" href="https://example.com/es/settings/" />
+<link rel="alternate" hreflang="pt" href="https://example.com/pt/settings/" />
+<link rel="alternate" hreflang="de" href="https://example.com/de/settings/" />
+<link rel="alternate" hreflang="fr" href="https://example.com/fr/settings/" />
+<link rel="alternate" hreflang="x-default" href="https://example.com/en/settings/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="настройки — Onyx" />
+<meta property="og:description" content="Настройки конвертера: тема и качество." />
+<meta property="og:url" content="https://example.com/settings/" />
+<meta property="og:site_name" content="Onyx" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style.css?v=1782065379390" />
+<script>try{var s=localStorage.getItem('convert-settings');var t=s?JSON.parse(s).theme:'auto';var d=t==='dark'||((!t||t==='auto')&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}</script>
+<script>window.ONYX={"locale":"ru","t":{"drop":"перетащите файл сюда","dropSub":"или нажмите, чтобы выбрать","dropFixed":"перетащите {F} сюда","process":"обработать","download":"скачать файл","again":"конвертировать ещё","clear":"убрать файл","processing":"обработка","loadingEngine":"загрузка движка… это может занять время","error":"ошибка конвертации","cat":{"фото":"фото","документ":"документы","аудио":"аудио","видео":"видео"},"dropImg":"перетащите изображение или PDF","dropImgSub":"jpg, png, webp, pdf · или нажмите, чтобы выбрать","cFormat":"формат","cQuality":"качество","cMaxWidth":"макс. ширина, px","cAsIs":"как есть","cResolution":"разрешение","cResLow":"ниже","cResMed":"среднее","cResHigh":"выше","cDo":"сжать","cing":"сжатие","cAgain":"сжать другой файл","inDev":"в разработке","inDevSub":"скоро добавим — пока доступно сжатие фото и PDF","cSavedLabel":"меньше","cWas":"было","cNow":"стало"}};</script>
+
+</head>
+<body>
+<div id="app">
+<nav id="sidebar" aria-label="конвертер">
+  <a class="sidebar-logo" href="/">onyx</a>
+  <a class="sidebar-tab" data-section="convert" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12M4 8l3-3M4 8l3 3"/><path d="M20 16H8m12 0l-3-3m3 3l-3 3"/></svg><span>конвертер</span></a>
+  <a class="sidebar-tab" data-section="compress" href="/compress/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg><span>сжатие</span></a>
+  <div class="sidebar-spacer"></div>
+  <a class="sidebar-tab" data-section="settings" href="/settings/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>настройки</span></a>
+  <a class="sidebar-tab" data-section="about" href="/about/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span>о проекте</span></a>
+</nav>
+<main id="content">
+<div class="page">
+  <h1 class="title">настройки</h1>
+  <div class="settings-section">
+    <div class="settings-heading">тема</div>
+    <div class="switcher" data-setting="theme">
+      <button class="switch-btn" data-value="auto">авто</button>
+      <button class="switch-btn" data-value="light">светлая</button>
+      <button class="switch-btn" data-value="dark">тёмная</button>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-heading">качество (JPG / WEBP)</div>
+    <div class="switcher" data-setting="quality">
+      <button class="switch-btn" data-value="normal">обычное</button>
+      <button class="switch-btn" data-value="high">высокое</button>
+      <button class="switch-btn" data-value="max">максимум</button>
+    </div>
+    <div class="settings-desc">влияет на размер и чёткость изображений при конвертации.</div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-langs"><a class="lang-link active" href="/settings/" hreflang="ru">Русский</a><a class="lang-link" href="/en/settings/" hreflang="en">English</a><a class="lang-link" href="/es/settings/" hreflang="es">Español</a><a class="lang-link" href="/pt/settings/" hreflang="pt">Português</a><a class="lang-link" href="/de/settings/" hreflang="de">Deutsch</a><a class="lang-link" href="/fr/settings/" hreflang="fr">Français</a></div>
+  <div class="footer-links"><a href="/about/">о проекте</a><a href="/privacy/">политика конфиденциальности</a><a href="/terms/">условия использования</a></div>
+  <div class="footer-copy">© 2026 Onyx</div>
+</footer>
+</main>
+</div>
+<script type="module" src="/js/main.js?v=1782065379390"></script>
+<script type="module" src="/js/settings-page.js?v=1782065379390"></script>
+</body>
+</html>

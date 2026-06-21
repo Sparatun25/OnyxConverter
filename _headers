@@ -1,0 +1,14 @@
+# Заголовки кеширования (читают и Cloudflare Pages, и Netlify).
+# Версионированные ассеты (?v=) и ffmpeg кешируем надолго, остальное — с ревалидацией.
+
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=604800
+
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
