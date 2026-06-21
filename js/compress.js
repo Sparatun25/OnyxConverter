@@ -9,7 +9,7 @@ const catLabel = (id) => (I.cat && I.cat[id]) || id;
 
 const CATS = [
     { id: "фото", mode: "image" },
-    { id: "документ", mode: "pdf" },
+    { id: "документ", mode: "dev" }, // корректное сжатие PDF (с сохранением текста) — серверная задача
     { id: "аудио", mode: "dev" },
     { id: "видео", mode: "dev" },
 ];

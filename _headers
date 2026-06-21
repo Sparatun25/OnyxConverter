@@ -12,3 +12,7 @@
 
 /js/*
   Cache-Control: public, max-age=0, must-revalidate
+
+# data/*.js импортируется модулями статически (без ?v=), поэтому тоже ревалидируем
+/data/*
+  Cache-Control: public, max-age=0, must-revalidate

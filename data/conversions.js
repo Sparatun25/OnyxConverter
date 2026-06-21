@@ -59,14 +59,13 @@ export const CONVERSIONS = [
     { from: "docx", to: "pdf"  }, { from: "docx", to: "txt"  }, { from: "docx", to: "html" },
     { from: "md",   to: "html" },
     { from: "txt",  to: "pdf"  },
-    // аудио → (ffmpeg.wasm)
+    // аудио → (ffmpeg.wasm). mp3/wav надёжны; ogg (libvorbis) в этой сборке падает — исключён.
     { from: "mp3",  to: "wav"  }, { from: "wav",  to: "mp3"  }, { from: "m4a", to: "mp3" },
     { from: "ogg",  to: "mp3"  }, { from: "flac", to: "mp3"  }, { from: "aac", to: "mp3" },
-    { from: "wav",  to: "ogg"  }, { from: "mp3",  to: "ogg"  }, { from: "flac", to: "wav" },
-    { from: "m4a",  to: "wav"  },
-    // видео → (ffmpeg.wasm)
+    { from: "flac", to: "wav"  }, { from: "m4a",  to: "wav"  },
+    // видео → (ffmpeg.wasm). mp4 (x264) и gif работают; webm (libvpx) в этой сборке падает — исключён.
     { from: "mov",  to: "mp4"  }, { from: "webm", to: "mp4"  }, { from: "avi", to: "mp4" },
-    { from: "mkv",  to: "mp4"  }, { from: "mp4",  to: "webm" }, { from: "mp4", to: "gif" },
+    { from: "mkv",  to: "mp4"  }, { from: "mp4",  to: "gif" },
     { from: "mp4",  to: "mp3"  }, { from: "mov",  to: "mp3"  }, { from: "webm", to: "mp3" },
 ];
 

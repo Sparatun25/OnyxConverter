@@ -65,6 +65,7 @@ export function initConverter(root) {
     let to = root.dataset.to || targetsFor(from)[0];
     let currentFile = null;
     let lastUrl = null;
+    let controller = null; // AbortController текущей конвертации (для отмены)
 
     function sourcesInCategory(cat) {
         return sources.filter((f) => FORMATS[f]?.kind === cat);
@@ -165,17 +166,21 @@ export function initConverter(root) {
     // ── обработка ──
     processBtn.addEventListener("click", async () => {
         if (!currentFile) return;
+        const srcName = currentFile.name;
+        controller = new AbortController();
+        const signal = controller.signal;
         processBtn.disabled = true;
         const heavy = FORMATS[from]?.kind === "видео" || FORMATS[from]?.kind === "аудио";
         const proc = tr("processing", "обработка");
         setStatus(`<span class="spinner"></span>${heavy ? tr("loadingEngine", "загрузка движка… это может занять время") : proc + "… 0%"}`);
         try {
             const { blob, ext } = await convert(currentFile, from, to, (pct) => {
-                setStatus(`<span class="spinner"></span>${proc}… ${pct}%`);
-            });
+                if (!signal.aborted) setStatus(`<span class="spinner"></span>${proc}… ${pct}%`);
+            }, signal);
+            if (signal.aborted) return; // отменили — результат игнорируем
             if (lastUrl) URL.revokeObjectURL(lastUrl);
             lastUrl = URL.createObjectURL(blob);
-            const base = currentFile.name.replace(/\.[^.]+$/, "");
+            const base = srcName.replace(/\.[^.]+$/, "");
             downloadLink.href = lastUrl;
             downloadLink.download = `${base}.${ext}`;
             resultStatus.textContent = `готово · ${up(ext)} · ${formatSize(blob.size)}`;
@@ -183,17 +188,22 @@ export function initConverter(root) {
             resultBox.classList.remove("hidden");
             clearStatus();
         } catch (err) {
+            if (err?.name === "AbortError" || signal.aborted) return; // отмена — молча
             console.error(err);
-            showError(err.message || tr("error", "ошибка конвертации"));
-        } finally {
+            showError(tr("error", "ошибка конвертации"));
             processBtn.disabled = false;
+        } finally {
+            controller = null;
         }
     });
 
-    // ── сброс ──
+    // ── сброс / отмена ──
     function reset() {
+        if (controller) controller.abort(); // прерываем конвертацию, если идёт
+        controller = null;
         currentFile = null;
         fileInput.value = "";
+        processBtn.disabled = false;
         controls.classList.add("hidden");
         resultBox.classList.add("hidden");
         dropzone.classList.remove("hidden");

@@ -39,6 +39,14 @@ async function getFFmpeg() {
     return ff;
 }
 
+// Полный сброс движка. Нужен после краша (wasm повреждается) или отмены —
+// иначе следующая конвертация падала бы на «мёртвом» инстансе.
+function killFFmpeg() {
+    if (ff) { try { ff.terminate(); } catch (_) {} }
+    ff = null;
+    progressCb = null;
+}
+
 function buildArgs(input, output, from, to) {
     if (to === "mp3" && VIDEO_IN.includes(from)) return ["-i", input, "-vn", "-q:a", "2", output]; // извлечь звук
     if (to === "gif") return ["-i", input, "-vf", "fps=12,scale=480:-1:flags=lanczos", output];
@@ -46,18 +54,42 @@ function buildArgs(input, output, from, to) {
     return ["-i", input, output];
 }
 
-export async function mediaConvert(file, from, to, onProgress) {
+export async function mediaConvert(file, from, to, onProgress, signal) {
+    if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
     onProgress?.(1);
     const ffmpeg = await getFFmpeg();
+    if (signal?.aborted) throw new DOMException("Aborted", "AbortError"); // отменили во время загрузки движка
     progressCb = onProgress;
 
     const input = "input." + from;
     const output = "output." + to;
-    await ffmpeg.writeFile(input, new Uint8Array(await file.arrayBuffer()));
-    await ffmpeg.exec(buildArgs(input, output, from, to));
-    const data = await ffmpeg.readFile(output);
-    onProgress?.(100);
 
-    try { await ffmpeg.deleteFile(input); await ffmpeg.deleteFile(output); } catch (_) {}
-    return { blob: new Blob([data.buffer], { type: MIME[to] || "application/octet-stream" }), ext: to };
+    let onAbort;
+    const abortP = new Promise((_, reject) => {
+        if (signal?.aborted) return reject(new DOMException("Aborted", "AbortError"));
+        onAbort = () => reject(new DOMException("Aborted", "AbortError"));
+        if (signal) signal.addEventListener("abort", onAbort, { once: true });
+    });
+
+    const work = (async () => {
+        await ffmpeg.writeFile(input, new Uint8Array(await file.arrayBuffer()));
+        await ffmpeg.exec(buildArgs(input, output, from, to));
+        const data = await ffmpeg.readFile(output);
+        return new Blob([data.buffer], { type: MIME[to] || "application/octet-stream" });
+    })();
+    work.catch(() => {}); // гасим гонку с отменой, чтобы не было unhandledrejection
+
+    try {
+        const blob = await Promise.race([work, abortP]);
+        onProgress?.(100);
+        try { await ffmpeg.deleteFile(input); await ffmpeg.deleteFile(output); } catch (_) {}
+        return { blob, ext: to };
+    } catch (err) {
+        // отмена или краш — движок в неопределённом состоянии, пересоздаём с нуля
+        killFFmpeg();
+        if (err?.name === "AbortError") throw err;
+        throw new Error("media_failed");
+    } finally {
+        if (signal && onAbort) signal.removeEventListener("abort", onAbort);
+    }
 }

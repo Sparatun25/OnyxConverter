@@ -33,7 +33,7 @@ function handlerFor(from, to) {
     if (from === "docx" && to === "html") return docxToHtml;
     if (from === "md" && to === "html") return mdToHtml;
     if (from === "txt" && to === "pdf") return txtToPdf;
-    if (MEDIA_IN.includes(from)) return (f, p) => mediaConvert(f, from, to, p); // аудио/видео
+    if (MEDIA_IN.includes(from)) return (f, p, s) => mediaConvert(f, from, to, p, s); // аудио/видео
     return null;
 }
 
@@ -60,7 +60,7 @@ export function targetsFor(ext) {
 }
 
 // ── единая функция конвертации → { blob, ext } ──
-export async function convert(file, from, to, onProgress = () => {}) {
+export async function convert(file, from, to, onProgress = () => {}, signal) {
     from = normExt(from);
     to = normExt(to);
 
@@ -76,5 +76,5 @@ export async function convert(file, from, to, onProgress = () => {}) {
 
     const run = registry[from]?.[to];
     if (!run) throw new Error(`конвертация ${from} → ${to} пока не поддерживается`);
-    return run(file, onProgress);
+    return run(file, onProgress, signal);
 }
