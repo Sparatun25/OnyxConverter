@@ -13,8 +13,8 @@ import { LOCALES, DEFAULT_LOCALE, T, localePrefix, localeLabel } from "./data/i1
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
-// ВАЖНО: поменяйте на свой домен перед публикацией.
-const SITE = process.env.SITE_URL || "https://example.com";
+// Домен сайта (при своём домене — поменяйте здесь или задайте env SITE_URL).
+const SITE = process.env.SITE_URL || "https://onyxconverter.pages.dev";
 const SITE_NAME = "Onyx";
 const LOGO = "onyx";
 const VERSION = Date.now(); // версия ассетов — сбрасывает кеш браузера при каждой пересборке
