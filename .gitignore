@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# большой ffmpeg-wasm грузится с CDN (Cloudflare Pages не принимает файлы >25 МБ)
+vendor/ffmpeg/ffmpeg-core.wasm
