@@ -1,0 +1,150 @@
+<!-- @dsCard group="Onyx Premium" viewport="1180x760" name="Onyx — premium app" subtitle="Refined convert flow, account system, cat mascots, dark + light" -->
+<!-- @startingPoint section="Onyx Premium" subtitle="Full premium Onyx product — sidebar, convert flow, account" viewport="1180x800" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Onyx — Free Online File Converter & AI Tools · Photos, Docs, Audio, Video, Archives</title>
+<meta name="description" content="Convert images, documents, audio, video, archives, fonts, ebooks, spreadsheets and vectors for free — plus 11 AI tools: transcription, translation, OCR, background removal and more. Runs entirely in your browser. Private, instant, no uploads." />
+<meta name="keywords" content="file converter, ai transcription, background removal, ocr, image converter, heic to jpg, png to jpg, pdf converter, compress image, online converter, free, private, in-browser, epub converter, zip converter, font converter, video transcription, smart translator" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://onyx.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Onyx — Free Online File Converter" />
+<meta property="og:description" content="Convert and compress files for free, entirely in your browser. Private by design — nothing is uploaded." />
+<meta property="og:image" content="../assets/cat-mascot.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Onyx — Free Online File Converter" />
+<meta name="twitter:description" content="Convert and compress files for free, in your browser. Nothing uploaded." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Onyx",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "Free, private, in-browser converter and compressor for photos, documents, audio and video.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Are my files uploaded anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. Everything runs locally in your browser. Your files never leave your device." } },
+        { "@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": { "@type": "Answer", "text": "On the free plan, large files depend on your device's memory. Pro lifts the limit entirely." } },
+        { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "Not to convert. An account simply lets you track usage and unlock Pro." } },
+        { "@type": "Question", "name": "Which formats are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Photos (PNG, JPG, WebP, HEIC, AVIF), documents (PDF, DOCX, MD), audio (MP3, WAV, OGG), video (MP4, MOV, WebM), archives (ZIP, RAR, 7Z), presentations (PPTX, PDF, KEY), fonts (TTF, OTF, WOFF), ebooks (EPUB, MOBI), spreadsheets (XLSX, CSV), and vectors (SVG, AI, EPS). Plus 11 AI-powered tools: transcription, translation, OCR, background removal, vectorisation and more." } },
+        { "@type": "Question", "name": "What AI tools does Onyx offer?", "acceptedAnswer": { "@type": "Answer", "text": "Onyx AI Studio includes Smart Transcriber, Auto-Subtitles, Media Summariser, Smart Translator, Tone Shift, AI OCR, Smart Vector, Generative Compress, Background Removal, Code Converter, and Data to Tables — all running privately in your browser." } }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="icon" href="../assets/onyx-logo.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="../assets/cat-loading.gif" />
+<link rel="preload" as="image" href="../assets/cat-mascot.png" />
+<link rel="preload" as="image" href="../assets/cat-waiting.png" />
+<link rel="preload" as="image" href="../assets/cat-peek.png" />
+<link rel="preload" as="image" href="../assets/cat-success.png" />
+<link rel="preload" as="image" href="../assets/cat-about.png" />
+<link rel="preload" as="image" href="../assets/cat-companion.png" />
+<link rel="preload" as="image" href="../assets/cat-api.png" />
+<style>
+  :root {
+    --blue: #2f8af9; --green: #2fb344; --red: #ed2236; --gray: #75757e;
+    --primary: #fff; --secondary: #0b0b0c;
+    --bg: #fff; --bg-2: #fafafa; --card: #fff; --raised: #fff;
+    --btn: #f3f3f4; --btn-hover: #ebebec; --btn-text: #1c1c1e;
+    --line: rgba(0,0,0,0.09); --line-2: rgba(0,0,0,0.06);
+    --muted: #6b6b73; --faint: #9a9aa2;
+    --field: #fff; --field-line: #e2e2e6;
+    --drop-line: #d2d2d8; --drop-bg: rgba(47,138,249,0.04);
+    --r-sm: 10px; --r: 14px; --r-lg: 22px; --r-pill: 999px;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-lg: 0 1px 3px rgba(0,0,0,0.06), 0 18px 50px rgba(0,0,0,0.12);
+    --glow: 0 0 0 1px rgba(47,138,249,0.25), 0 12px 40px rgba(47,138,249,0.18);
+    --font: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --spring: cubic-bezier(0.34, 1.4, 0.5, 1);
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --blue: #4c97ff; --green: #3ecf63; --red: #ff5468; --gray: #818188;
+    --primary: #0a0a0b; --secondary: #ededef;
+    --bg: #0a0a0b; --bg-2: #0e0e10; --card: #141416; --raised: #18181b;
+    --btn: #1d1d20; --btn-hover: #26262a; --btn-text: #ededef;
+    --line: rgba(255,255,255,0.09); --line-2: rgba(255,255,255,0.055);
+    --muted: #9b9ba3; --faint: #6c6c74;
+    --field: #161619; --field-line: #2a2a2f;
+    --drop-line: #303036; --drop-bg: rgba(76,151,255,0.05);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.4);
+    --shadow-lg: 0 2px 6px rgba(0,0,0,0.4), 0 24px 60px rgba(0,0,0,0.6);
+    --glow: 0 0 0 1px rgba(76,151,255,0.3), 0 12px 44px rgba(76,151,255,0.22);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--secondary); font-family: var(--font);
+    font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  #root { height: 100vh; }
+  ::selection { background: var(--blue); color: #fff; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; border: 3px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--field-line); background-clip: content-box; }
+  h1, h2, h3, p, ul, ol { margin: 0; }
+  button { font-family: inherit; }
+  a { color: inherit; }
+
+  /* ---- cat animations ---- */
+  .cat { color: inherit; display: block; }
+  .cat-float { animation: catFloat 6s var(--ease) infinite; }
+  @keyframes catFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+  .cat-eye { animation: catBlink 5.5s infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes catBlink { 0%,92%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.12)} }
+  .cat-tail { animation: catTail 4s var(--ease) infinite; }
+  @keyframes catTail { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-7deg)} }
+  .cat-ear-l { animation: catEarL 7s var(--ease) infinite; transform-box: fill-box; transform-origin: bottom right; }
+  @keyframes catEarL { 0%,88%,100%{transform:rotate(0)} 93%{transform:rotate(-9deg)} }
+  .cat-tilt { animation: catTilt 3.5s var(--ease) infinite; }
+  @keyframes catTilt { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
+
+  /* ---- shared motion (transform-only: content stays visible if timeline is frozen) ---- */
+  .rise { animation: rise 0.55s var(--ease) forwards; }
+  @keyframes rise { from{transform:translateY(14px)} to{transform:translateY(0)} }
+  .pop { animation: pop 0.45s var(--spring) forwards; }
+  @keyframes pop { from{transform:scale(0.96)} to{transform:scale(1)} }
+  .fade { animation: fade 0.3s var(--ease) forwards; }
+  @keyframes fade { from{opacity:0} to{opacity:1} }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(220%)} }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<!-- Note: React scripts are commented out as this is a design reference -->
+<!--
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="cats.jsx"></script>
+<script type="text/babel" src="i18n.jsx"></script>
+<script type="text/babel" src="ui.jsx"></script>
+<script type="text/babel" src="screens.jsx"></script>
+<script type="text/babel" src="account.jsx"></script>
+<script type="text/babel" src="studio.jsx"></script>
+<script type="text/babel" src="growth.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+-->
+</body>
+</html>
